@@ -3,5 +3,33 @@
 
 
 {% block body %}
-        
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Desciption</th>
+            <th scope="col">Author</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+        <tr>
+            <th scope="row">{{book.id}}</th>
+            <td>{{book.title}}</td>
+            <td>{{book.description}}</td>
+            <td>{{book.author}}</td>
+            <td>
+                <button class="btn btn-danger"><a href="{% url 'book:delete_book' book.id %}" style="text-decoration: none; color: white;">Delete</a></button>
+                <button class="btn btn-warning"><a href="{% url 'book:edit_book' book.id %}" style="text-decoration: none; color: white;">Edit</a></button>
+                <button class="btn btn-primary"><a href="{% url 'book:see_book' book.id %}" style="text-decoration: none; color: white;">See</a></button>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navbar">
+        <button class="btn btn-success"><a href="" style="text-decoration: none; color: white;">Create Book</a></button>
+    </div>
 {% endblock %}
