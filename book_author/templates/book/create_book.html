@@ -1,0 +1,31 @@
+{% extends 'book/base.html' %}
+{% block title %} Create Book {% endblock %}
+
+{% block body %}
+
+<form action="{% url 'book:create-book' %}" method="post" style="margin: 40px;">
+    {% csrf_token %}
+    <p>
+        <b>Kitob nomi:</b>
+        <input type="text" placeholder="Kitob nomi..." name="name">
+    </p>
+    
+    <p>
+        <b>Izohi nomi:</b>
+        <input type="text" placeholder="Izohni kiriting..." name="description">
+    </p>
+    <p>
+        <b>Author nomi:</b>
+        <select name="author_id" id="">
+            <option value="">__</option>
+            {% for author in authors %}
+                <option value="{{author.id}}">{{author.name}}</option>
+            {% endfor %}
+        </select>
+    </p>
+    <p>
+        <input type="button" class="btn btn-success" onclick="this.form.submit()" value="Create">
+    </p>
+</form>
+
+{% endblock %}

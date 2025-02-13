@@ -1,0 +1,14 @@
+{% extends 'book/base.html' %}
+{% block title %} Home {% endblock %}
+
+
+{% block body %}
+
+<form action="" method="post" style="margin: 40px;">
+    {% csrf_token %}
+    <p>Name:<b style="margin-left: 1vh;">{{book.title}}</b></p>
+    <p>Description:<b style="margin-left: 1vh;">{{book.description}}</b></p>
+    <p>Author:<b style="margin-left: 1vh;">{{book.author}}</b></p>
+</form>
+
+{% endblock %}

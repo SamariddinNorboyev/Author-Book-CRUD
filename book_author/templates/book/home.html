@@ -21,15 +21,15 @@
             <td>{{book.description}}</td>
             <td>{{book.author}}</td>
             <td>
-                <button class="btn btn-danger"><a href="{% url 'book:delete_book' book.id %}" style="text-decoration: none; color: white;">Delete</a></button>
-                <button class="btn btn-warning"><a href="{% url 'book:edit_book' book.id %}" style="text-decoration: none; color: white;">Edit</a></button>
-                <button class="btn btn-primary"><a href="{% url 'book:see_book' book.id %}" style="text-decoration: none; color: white;">See</a></button>
+                <a href="{% url 'book:delete_book' book.id %}" style="text-decoration: none; color: white;"><button class="btn btn-danger">Delete</button></a>
+                <a href="{% url 'book:edit_book' book.id %}" style="text-decoration: none; color: white;"><button class="btn btn-warning">Edit</button></a>
+                <a href="{% url 'book:see_book' book.id %}" style="text-decoration: none; color: white;"><button class="btn btn-primary">See</button></a>
             </td>
         </tr>
         {% endfor %}
         </tbody>
     </table>
-    <div class="navbar">
-        <button class="btn btn-success"><a href="" style="text-decoration: none; color: white;">Create Book</a></button>
+    <div class="navbar" style="margin: 3vh;">
+        <a href="{% url 'book:create-book' %}" style="text-decoration: none; color: white;"><button class="btn btn-success">Create Book</button></a>
     </div>
 {% endblock %}

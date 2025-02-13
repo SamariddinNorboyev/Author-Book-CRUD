@@ -4,21 +4,28 @@
 
 {% block body %}
 
-<form action="" method="post">
+<form action="{% url 'book:edit_book' book.id %}" method="post" style="margin: 40px;">
+    {% csrf_token %}
     <p>
-        <input type="text" value="{{book.name}}" name="name">
+        <b>Name:</b>
+        <input type="text" value="{{book.title}}" name="name">
     </p>
     
     <p>
+        <b>Description:</b>
         <textarea name="description" id="">{{book.description}}</textarea>
     </p>
     <p>
+        <b>Authors:</b>
         <select name="author_id" id="">
             <option value="{{book.author.id}}">{{book.author}}</option>
             {% for author in authors %}
                 <option value="{{author.id}}">{{author.name}}</option>
             {% endfor %}
         </select>
+    </p>
+    <p>
+        <input type="button" class="btn btn-warning" onclick="this.form.submit()" value="Edit">
     </p>
 </form>
 
