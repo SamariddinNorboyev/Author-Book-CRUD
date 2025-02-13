@@ -1,0 +1,25 @@
+{% extends 'book/base.html' %}
+{% block title %} Create Book {% endblock %}
+
+{% block body %}
+
+<form action="{% url 'book:create-author' %}" method="post" style="margin: 40px;">
+    {% csrf_token %}
+    <p>
+        <b>Name:</b>
+        <input type="text" placeholder="Author's name..." name="name">
+    </p>
+    <p>
+        <b>Surname:</b>
+        <input type="text" placeholder="Author surname..." name="surname">
+    </p>
+    <p>
+        <b>Birthday:</b>
+        <input type="datetime-local" name="birthday">
+    </p>
+    <p>
+        <input type="button" class="btn btn-success" onclick="this.form.submit()" value="Create">
+    </p>
+</form>
+
+{% endblock %}

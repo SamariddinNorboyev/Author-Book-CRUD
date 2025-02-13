@@ -1,0 +1,42 @@
+{% extends 'book/base.html' %}
+{% block title %} Authors {% endblock %}
+
+{% block body %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Surname</th>
+            <th scope="col">Birthday</th>
+            <th scope="col">Books</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for author in authors %}
+        <tr>
+            <th scope="row">{{author.id}}</th>
+            <td>{{author.name}}</td>
+            <td>{{author.surname}}</td>
+            <td>{{author.birthday}}</td>
+            <td>
+                {% for book in books %}
+                    {% if book.author == author %}
+                        {{book.title}}
+                    {% endif %}
+                {% endfor %}
+            </td>
+            <td>
+                <a href="{% url 'book:delete_author' author.id %}" style="text-decoration: none; color: white;"><button class="btn btn-danger">Delete</button></a>
+                <a href="{% url 'book:edit_author' author.id %}" style="text-decoration: none; color: white;"><button class="btn btn-warning">Edit</button></a>
+                <a href="{% url 'book:see_author' author.id %}" style="text-decoration: none; color: white;"><button class="btn btn-primary">See</button></a>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navbar" style="margin: 3vh;">
+        <a href="{% url 'book:create-author' %}" style="text-decoration: none; color: white;"><button class="btn btn-success">Create Author</button></a>
+    </div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'book/base.html' %}
+{% block title %} Edit Author {% endblock %}
+
+
+{% block body %}
+
+<form action="{% url 'book:edit_author' author.id %}" method="post" style="margin: 40px;">
+    {% csrf_token %}
+    <p>
+        <b>Name:</b>
+        <input type="name" value="{{author.name}}" name="name">
+    </p>
+    <p>
+        <b>Surname:</b>
+        <textarea name="surname" id="">{{author.surname}}</textarea>
+    </p>
+    <p>
+        <b>Birthday:</b>
+        <input type="datetime-local" value="{{author.birthday}}" name="birthday">
+    </p>
+    <p>
+        <input type="button" class="btn btn-warning" onclick="this.form.submit()" value="Edit">
+    </p>
+</form>
+
+{% endblock %}

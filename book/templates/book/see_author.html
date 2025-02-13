@@ -1,0 +1,23 @@
+{% extends 'book/base.html' %}
+{% block title %} See Author {% endblock %}
+
+
+{% block body %}
+
+<form action="" method="post" style="margin: 40px;">
+    {% csrf_token %}
+    <p>Name:<b style="margin-left: 1vh;">{{author.name}}</b></p>
+    <p>Surname:<b style="margin-left: 1vh;">{{author.surname}}</b></p>
+    <p>Birthday:<b style="margin-left: 1vh;">{{author.birthday}}</b></p>
+    <p>Books:
+        <b style="margin-left: 1vh;">
+            {% for book in books %}
+                {% if book.author == author %}
+                    {{book.title}}
+                {% endif %}
+            {% endfor %}
+        </b>
+    </p>
+</form>
+
+{% endblock %}
